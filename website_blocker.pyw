@@ -8,7 +8,7 @@ host_file_path = r"C:\Windows\System32\drivers\etc\hosts"
 # the address we will redirect the user to if they go to a blocked site
 redirect = "127.0.0.1"
 # list of sites to block, has 2 variations per site as if only 1 address is used it doesn't work all the time
-block_site_list = ["www.facebook.com", "www.instagram.com", "facebook.com", "instagram.com", "reddit.com", "www.youtube.com", "youtube.com"]
+block_site_list = ["www.facebook.com", "www.instagram.com", "facebook.com", "instagram.com"]
 
 # infinte loop keeps programming running until system is shut down
 while True:
@@ -17,7 +17,7 @@ while True:
         #print("working hours")
 
         # chekcs if site string from block_site_list is found in the file, if not it writes the redirect address and the websites address to the file
-        with open(hosts_temp, "r+") as file:
+        with open(host_file_path, "r+") as file:
             file_content = file.read()
             for website in block_site_list:
                 if website in file_content:
@@ -29,7 +29,7 @@ while True:
         #print("fun hours")
 
         #checks each line of the file to see if it contains a website string, if it does then that line is not writen to the file
-        with open(hosts_temp, "r+") as file:
+        with open(host_file_path, "r+") as file:
             file_content = file.readlines()
             file.seek(0) #used to set cursor to start of file so we write at the top of the file
             for line in file_content:
